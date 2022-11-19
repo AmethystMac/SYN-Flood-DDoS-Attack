@@ -1,4 +1,0 @@
-base - #https://www.firewall.cx/general-topics-reviews/network-protocol-analyzers/1224-performing-tcp-syn-flood-attack-and-detecting-it-with-wireshark.html#
-synsource - #https://systemweakness.com/ping-and-syn-flood-attacks-with-python-and-scapy-6e4515435492#
-nmap sheet - #https://www.stationx.net/nmap-cheat-sheet/#
-wshark sheet - #https://www.comparitech.com/net-admin/wireshark-cheat-sheet/#
