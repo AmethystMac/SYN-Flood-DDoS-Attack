@@ -3,6 +3,8 @@ import pyshark
 source_ip = "172.22.8.1"
 destination_ip = "172.22.8.1"
 
+ip_addr = {}
+
 syn = 2
 ack = 10
 
@@ -14,6 +16,8 @@ try:
             flags = int(str(packet.tcp.flags)[-3:])
             if flags & syn and flags & ack:
                 print ("Source: ", packet.ip.src, "   Destination: ", packet.ip.dst)
+                ip_addr[source_ip] += 1
+                #for 
 
 except AttributeError as ae:
     print("Attribute Error:", ae)

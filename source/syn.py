@@ -13,6 +13,8 @@ def send_syn(target_ip: str, target_port: int, total_packets: int = 4, packet_si
     send(p, count=total_packets, verbose=0)
     print("Successfully sent " + str(total_packets) + " packets of " + str(packet_size) + " size to " + target_ip + " on port " + str(target_port))
 
-ip = "172.22.8.1"
-port = 443
-send_syn(ip, port, total_packets=1000)
+# For debugging purposes, use the below code
+
+# ip = "172.22.8.1"
+# port = 443
+# send_syn(ip, port, total_packets=1000)
