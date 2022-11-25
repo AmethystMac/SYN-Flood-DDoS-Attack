@@ -1,3 +1,4 @@
+# Code-AMETHYST ver2.4
 # TCP-SYN Flood Attack Simulation GUI
 
 # Modules
@@ -19,9 +20,10 @@ def attack():
 
 # GUI
 root = Tk()
+root.title("Attacker")
 root.geometry("200x200")
 
-label = Label(root, text = "foo")
+label = Label(root, text = "MATTHEW'S SYN FLOOD SIMULATOR")
 textbox = Text(root, height = 1, width = 10)
 button1 = Button(root, text = "ATTACK!!!!", command = attack)
 button2 = Button(root, text = "destroy", command = root.destroy)

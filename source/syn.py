@@ -1,6 +1,10 @@
-# Code-AMETHYST ver2.1
+# Code-AMETHYST ver2.
+# Back-end SYN Flood Attack code
+
+# Modules
 from head import IP, TCP, Raw, send, RandShort
 
+# Functions
 def send_syn(target_ip: str, target_port: int, total_packets: int = 4):
 
     print("Sending " + str(total_packets) + " packets to ip " + target_ip)
