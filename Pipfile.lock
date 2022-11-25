@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "3c15278d5f41c66e8f9fc9adc6618c0a6ea29dff424b43b4114a055acc8616d2"
+            "sha256": "73540d736e56aadc92e65b23f3c24f49fdb554d7add6891619ef1d4ffbf1397c"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -30,6 +30,21 @@
             ],
             "markers": "python_version >= '3.7'",
             "version": "==3.5.2"
+        },
+        "customtkinter": {
+            "hashes": [
+                "sha256:479ecdcfa91cd54d03be7c302612fcb3719df8928657bab5ea4a0a9e255e7099",
+                "sha256:d475da11aeaf4edd83499ceffb9437614d47b2a3c5d41531d115a3ff942d7838"
+            ],
+            "index": "pypi",
+            "version": "==4.6.3"
+        },
+        "darkdetect": {
+            "hashes": [
+                "sha256:3efe69f8ecd5f1b7f4fbb0d1d93f656b0e493c45cc49222380ffe2a529cbc866",
+                "sha256:47be3cf5134432ddb616bbffc927237718407914993c82809983e7ccebf49013"
+            ],
+            "version": "==0.7.1"
         },
         "django": {
             "hashes": [

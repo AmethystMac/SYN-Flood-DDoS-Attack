@@ -7,6 +7,7 @@ sys.path.insert(0, "/home/kali/Desktop/SYN-Flood-DDoS-Attack/source")
 
 from tkinter import *
 import threading
+import customtkinter as ctk
 import syn
 
 # Functions
@@ -19,18 +20,22 @@ def attack():
     thread.start()
 
 # GUI
-root = Tk()
-root.title("Attacker")
-root.geometry("200x200")
+def main():
+    root = Tk()
+    root.title("Attacker")
+    root.geometry("400x400")
 
-label = Label(root, text = "MATTHEW'S SYN FLOOD SIMULATOR")
-textbox = Text(root, height = 1, width = 10)
-button1 = Button(root, text = "ATTACK!!!!", command = attack)
-button2 = Button(root, text = "destroy", command = root.destroy)
+    label = Label(root, text = "MATTHEW'S SYN FLOOD SIMULATOR")
+    textbox = Text(root, height = 1, width = 10)
+    button1 = Button(root, text = "ATTACK!!!!", command = attack)
+    button2 = Button(root, text = "destroy", command = root.destroy)
 
-label.pack()
-textbox.place(relx = 0.5, rely = 0.2, anchor = CENTER)
-button1.place(relx = 0.5, rely = 0.4, anchor = CENTER)
-button2.place(relx = 0.5, rely = 0.6, anchor = CENTER)
+    label.pack()
+    textbox.place(relx = 0.5, rely = 0.2, anchor = CENTER)
+    button1.place(relx = 0.5, rely = 0.4, anchor = CENTER)
+    button2.place(relx = 0.5, rely = 0.6, anchor = CENTER)
 
-root.mainloop()
+    root.mainloop()
+
+if __name__ == "__main__":
+    main()
