@@ -3,8 +3,9 @@
 
 # Modules
 import sys
-
-sys.path.insert(0, "//home/kali/Desktop/SYN-Flood-DDoS-Attack/source")
+import os
+pwd = os.path.dirname(os.path.abspath(__file__)) + "/../source"
+sys.path.insert(0, pwd)
 
 from tkinter import *
 import threading
