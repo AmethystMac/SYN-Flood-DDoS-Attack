@@ -53,7 +53,6 @@ def flood_check(label1: ctk.CTkLabel, label2: ctk.CTkLabel):
             print("Runtime Error: Dictionary Size Changed.")
 
 def stall(label: ctk.CTkLabel):
-    print("inside stall")
     label.configure(text="Congested", text_color="red")
     sleep(3)
     label.configure(text="Working", text_color="lime")
