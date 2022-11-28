@@ -10,7 +10,7 @@ import socket
 import pyshark
 
 # Global variables
-attack = False
+attack = Falsfe
 ip_addr = defaultdict(int)
 
 # Functions
