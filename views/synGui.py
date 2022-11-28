@@ -7,13 +7,13 @@ import os
 pwd = os.path.dirname(os.path.abspath(__file__)) + "/../source"
 sys.path.insert(0, pwd)
 
-import threading
 import tkinter as tk
 import customtkinter as ctk
+import threading
 import syn
 
 ctk.set_appearance_mode("dark")
-ctk.set_default_color_theme("green")
+ctk.set_default_color_theme(pwd + "/red-theme.json")
 
 # Main Class
 class GUI(ctk.CTk):
@@ -30,8 +30,8 @@ class GUI(ctk.CTk):
         self.maxsize(400, 400)
 
         # Basic Mode
-        self.label1 = ctk.CTkLabel(master=self, text="MATT'S SYN FLOOD SIMULATOR", text_font=("Roboto Medium", -18), height=10, width=40)
-        self.label1.place(x=60, y=20)
+        self.label1 = ctk.CTkLabel(master=self, text="MATT'S SYN FLOOD SIMULATOR", text_font=("", -18), height=10, width=40)
+        self.label1.place(x=60, y=15)
 
         self.label2 = ctk.CTkLabel(master=self, text="IP Address:", height=10, width=40)
         self.label2.place(x=10, y=60)
@@ -58,14 +58,20 @@ class GUI(ctk.CTk):
         self.label4 = ctk.CTkLabel(master=self, text="Port:", height=10, width=40)
         self.label4.place(x=5, y=220)
 
-        self.entry2 = ctk.CTkEntry(master=self, placeholder_text="default=443", state="disabled")
+        self.entry2 = ctk.CTkEntry(master=self, state="disabled")
         self.entry2.place(x=100, y=215)
+
+        self.label10 = ctk.CTkLabel(master=self, text="default=443", height=10, width=40)
+        self.label10.place(x=260, y=220)
 
         self.label5 = ctk.CTkLabel(master=self, text="Packets:", height=10, width=40)
         self.label5.place(x=10, y=270)
 
-        self.entry3 = ctk.CTkEntry(master=self, placeholder_text="default=10000", state="disabled")
+        self.entry3 = ctk.CTkEntry(master=self, state="disabled")
         self.entry3.place(x=100, y=265)
+
+        self.label8 = ctk.CTkLabel(master=self, text="default=10000", height=10, width=40)
+        self.label8.place(x=260, y=270)
 
         self.label6 = ctk.CTkLabel(master=self, text="Intensity:", height=10, width=40)
         self.label6.place(x=10, y=318)
@@ -74,8 +80,8 @@ class GUI(ctk.CTk):
         self.slider.place(x=100, y=320)
         self.slider.set(0)
 
-        self.label7 = ctk.CTkLabel(master=self, text="", text_color="red", height=10, width=40)
-        self.label7.place(x=100, y=360)
+        self.label7 = ctk.CTkLabel(master=self, text="", text_color="red", text_font=("", -16), height=10, width=40)
+        self.label7.place(x=60, y=360)
 
     def adv_switch(self):
 
@@ -125,7 +131,7 @@ class GUI(ctk.CTk):
 
         ip = self.entry1.get()
         
-        thread = threading.Thread(target = syn.send_syn, args = (ip, port, packets, self.label9, self.count, ))
+        thread = threading.Thread(target=syn.send_syn, args=(ip, port, packets, self.label9, self.count, ))
         thread.start()
 
 if __name__ == "__main__":

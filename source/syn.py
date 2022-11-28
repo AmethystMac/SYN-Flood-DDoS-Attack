@@ -1,4 +1,4 @@
-# Code-AMETHYST ver2.
+# Code-AMETHYST ver2.4
 # Back-end SYN Flood Attack code
 
 # Modules
@@ -12,8 +12,7 @@ def send_syn(target_ip: str, target_port: int, total_packets: int, label: ctk.CT
 
     count += 1
     if count == 1:
-        label.configure(text="BUSY")
-        label.configure(text_color="red")
+        label.configure(text="BUSY", text_color="red")
 
     packet_size = 65000
     
@@ -27,8 +26,7 @@ def send_syn(target_ip: str, target_port: int, total_packets: int, label: ctk.CT
 
     count -= 1
     if count == 0:
-        label.configure(text="FREE")
-        label.configure(text_color="lime")
+        label.configure(text="FREE", text_color="lime")
 
 # For debugging purposes, use the code below
 
