@@ -10,7 +10,7 @@ import socket
 import pyshark
 
 # Global variables
-attack = Falsfe
+attack = False
 ip_addr = defaultdict(int)
 
 # Functions
@@ -26,7 +26,7 @@ def packet_sniff(ip: str):
             if "IP" in packet:
             #    flags = int(str(packet.tcp.flags)[-3:])
             #    if packet.ip.dst == ip:
-            #        print ("Source: ", packet.ip.src, "\tDestination: ", packet.ip.dst)
+            #    print ("Source: ", packet.ip.src, "\tDestination: ", packet.ip.dst)
                 ip_addr[packet.ip.src] += 1
 
     except AttributeError as ae:
