@@ -1,11 +1,13 @@
-# Code-AMETHYST ver2.4
+# Code-AMETHYST ver2.7
 # PyShark GUI
 
 # Modules
 import sys
 import os
-pwd = os.path.dirname(os.path.abspath(__file__)) + "/../source"
-sys.path.insert(0, pwd)
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__)) + "/../"
+SCRIPTS_DIR = PROJECT_DIR + "scripts/"
+IMAGES_DIR = PROJECT_DIR + "images/"
+sys.path.insert(0, SCRIPTS_DIR)
 
 import tkinter as tk
 import customtkinter as ctk
@@ -14,11 +16,11 @@ import socket
 import pys
 
 ctk.set_appearance_mode("dark")
-ctk.set_default_color_theme(pwd + "/green-theme.json")
+ctk.set_default_color_theme(SCRIPTS_DIR + "/green-theme.json")
 
 # GUI
 class GUI(ctk.CTk):
-    # Functions
+    # Methods
     def __init__(self):
         super().__init__()
 
@@ -63,21 +65,43 @@ class GUI(ctk.CTk):
         self.label9 = ctk.CTkLabel(master=self, text="Turn on Firewall", height=10, width=40)
         self.label9.place(x=120, y=220)
 
-        self.label10 = ctk.CTkLabel(master=self, text="", text_color="red", text_font=("", -20), height=10, width=40)
-        self.label10.place(x=60, y=280)
+        self.label10 = ctk.CTkLabel(master=self, text="Outgoing Traffic: ", height=10, width=40)
+        self.label10.place(x=10, y=260)
+
+        self.label11 = ctk.CTkLabel(master=self, text="Turn on Firewall", height=10, width=40)
+        self.label11.place(x=120, y=260)
+
+        self.label12 = ctk.CTkLabel(master=self, text="Incoming Traffic: ", height=10, width=40)
+        self.label12.place(x=10, y=300)
+
+        self.label13 = ctk.CTkLabel(master=self, text="Turn on Firewall", height=10, width=40)
+        self.label13.place(x=120, y=300)
+
+        self.label14 = ctk.CTkLabel(master=self, text="", text_color="red", text_font=("", -18), height=10, width=40)
+        self.label14.place(x=80, y=340)
 
     def flood_detect(self):
-
         self.button1.configure(state="disabled")
         self.label5.configure(text="TURNED ON", text_color="lime")
         self.label7.configure(text="Working", text_color="lime")
         self.label9.configure(text="Working", text_color="lime")
+        self.label11.configure(text="0.00 B/s")
+        self.label13.configure(text="0.00 B/s")
 
         thread1 = threading.Thread(target=pys.packet_sniff, args=(self.this_ip, ))
-        thread2 = threading.Thread(target=pys.flood_check, args=(self.label7, self.label10, ))
+        thread2 = threading.Thread(target=pys.flood_check, args=(self.label14, ))
+        thread3 = threading.Thread(target=pys.congestion_mech, args=(self.label7, ))
+        thread4 = threading.Thread(target=pys.transmission_rate, args=(self.label11, self.label13, self.label14, ))
+
+        thread1.daemon = True
+        thread2.daemon = True
+        thread3.daemon = True
+        thread4.daemon = True
 
         thread1.start()
         thread2.start()
+        thread3.start()
+        thread4.start()
 
 if __name__ == "__main__":
     app = GUI()

