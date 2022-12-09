@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sudo /home/kali/.local/share/virtualenvs/SYN-Flood-DDoS-Attack-URmDFOUH/bin/python ./views/pysGui.py
+sudo python ./views/pysGui.py

