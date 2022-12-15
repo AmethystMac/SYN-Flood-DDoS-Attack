@@ -2,9 +2,10 @@
 This application is used to demonstrate the detection mechanism against a SYN Flood DDoS Attack targetted at your network.  
 Contains an **additional** simulation application to simulate the attack for testing purposes.
 
-&emsp;&emsp;&emsp;&emsp;
-![Simulator App Image](/images/app1.png)
-&emsp;&emsp;
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+![Simulator App Image](/images/app1.png)  
+
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
 ![Detector App Image](/images/app2.png)
 
 ## Installation
